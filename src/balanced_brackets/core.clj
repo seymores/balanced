@@ -8,15 +8,18 @@
       (pop stack)
       (conj stack item))))
 
-(defn- bracket-match
-  [s]
-  (loop [val s
-         stack []]
-    (if-let [i (first val)]
-      (recur (rest val) (pop-or-push i stack))
-      stack)))
+; (defn- bracket-match
+;   [s]
+;   (loop [val s
+;          stack []]
+;     (if-let [i (first val)]
+;       (recur (rest val) (pop-or-push i stack))
+;       stack)))
 
 (defn balanced?
   "balanced? returns true if given string of brackets '(())' is balanced"
   [s]
-  (zero? (count (bracket-match s))))
+  (empty? (loop [val s stack []]
+            (if-let [i (first val)]
+              (recur (rest val) (pop-or-push i stack))
+              stack))))
