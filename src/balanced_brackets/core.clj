@@ -1,5 +1,9 @@
 (ns balanced-brackets.core)
 
+; (pop-or-push \( [\(])
+; [\( \(]
+; (pop-or-push \( [\)])
+; []
 (defn- pop-or-push
   [item stack]
   (if (= item \()
